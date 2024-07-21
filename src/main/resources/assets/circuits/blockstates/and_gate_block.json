@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "circuits:block/and_gate_block",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "circuits:block/and_gate_block"
+    },
+    "facing=west": {
+      "model": "circuits:block/and_gate_block",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "circuits:block/and_gate_block",
+      "y": 270
+    }
+  }
+}
