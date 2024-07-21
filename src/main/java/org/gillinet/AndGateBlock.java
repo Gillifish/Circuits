@@ -45,6 +45,7 @@ public class AndGateBlock extends Block {
         return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
+    // Implements logic for determining if the gate is powered
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
         Direction facing = state.get(FACING);
@@ -58,6 +59,7 @@ public class AndGateBlock extends Block {
         }
     }
 
+    // Updates redstone on block add
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         super.onBlockAdded(state, world, pos, oldState, notify);
@@ -65,6 +67,7 @@ public class AndGateBlock extends Block {
         this.updateRedstone(world, pos, state);
     }
 
+    // Updates all neighboring redstone
     private void updateRedstone(World world, BlockPos pos, BlockState state) {
         world.updateNeighborsAlways(pos, this);
         for (Direction direction : Direction.values()) {
@@ -72,6 +75,7 @@ public class AndGateBlock extends Block {
         }
     }
 
+    // Returns max redstone power from relative forward facing if powered
     @Override
     public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
         if (direction == state.get(FACING)) {
@@ -84,6 +88,7 @@ public class AndGateBlock extends Block {
         return 0;
     }
 
+    // Self-explanatory
     @Override
     public boolean emitsRedstonePower(BlockState state) {
         return true;
